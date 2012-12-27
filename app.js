@@ -13,7 +13,7 @@ var config;
 switch(process.env.NODE_ENV) {
   case 'development':
     config = {
-      port: 3000
+      port: process.env.PORT
     };
     break;
   case 'production':
