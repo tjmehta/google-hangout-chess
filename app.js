@@ -26,7 +26,6 @@ switch(process.env.NODE_ENV) {
 }
 
 app.configure('development', function() {
-  app.use(middleware.yeomanProxy);
   app.use(express['static']('static'));
   app.use(middleware.expressLogger);
   app.use(express.bodyParser());
@@ -40,8 +39,8 @@ app.configure('development', function() {
 });
 
 app.configure('production', function() {
-  app.use(middleware.expressLogger);
   app.use(express['static']('static'));
+  app.use(middleware.expressLogger);
   app.use(express.bodyParser());
   // app.use(cookies.express());
   // app.use(express.cookieSession(session));
