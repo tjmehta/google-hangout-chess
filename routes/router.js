@@ -6,7 +6,7 @@ var router = module.exports = function(app) {
   // D - delete
 
   app.get('/', function(req, res) {
-    res.send('hello world');
+    res.send('Hello World');
   });
 
 };
