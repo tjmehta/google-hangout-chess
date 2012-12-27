@@ -1,5 +1,4 @@
 var _ = require('underscore');
-var routingProxy = new httpProxy.RoutingProxy();
 
 var middleware = module.exports;
 
