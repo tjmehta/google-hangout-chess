@@ -1,19 +1,32 @@
 var helpers = require('../core').helpers;
 
 module.exports.express = function(req, res, next) {
-  res.pond = function(errorStatusCode){
-    return function() {
-      if (arguments[0] instanceof Error) {
-        //f(error)
-        args = [errorStatusCode||400, arguments[0]];
+  res._json = res.json;
+  res.json = function(){
+      var args = Array.prototype.slice.apply(arguments);
+      var statusCode, json;
+
+      if (typeof args[0] == 'number') {
+        statusCode = args.shift();
       }
-      else if (!helpers.exists(arguments[0]) && arguments[1]) {
+
+      if (args[0] instanceof Error) {
+        //f(error)
+        statusCode = statusCode || 400;
+        json       = { error: args[0] };
+        args       = [statusCode, json];
+      }
+      else if (!helpers.exists(args[0]) && args[1]) {
         //f(nullOrUndefined, data)
-        args = [arguments[1]];
+        statusCode = statusCode || 200;
+        json       = args[1];
+        args       = [statusCode, json];
       }
       else {
+        //f(status, data)
         args = arguments;
       }
+
       if (process.env.NODE_ENV == 'development') {
         console.log('<res.json>');
         console.log(args);
@@ -25,8 +38,8 @@ module.exports.express = function(req, res, next) {
         }
         console.log('<res.json>');
       }
-      res.json.apply(res, args);
-    };
+
+      res._json.apply(res, args);
   };
 
   next();
