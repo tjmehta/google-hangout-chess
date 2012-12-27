@@ -18,7 +18,7 @@ switch(process.env.NODE_ENV) {
     break;
   case 'production':
     config = {
-      port: 80
+      port: process.env.PORT
     };
     break;
   default:
