@@ -13,7 +13,7 @@ var config;
 switch(process.env.NODE_ENV) {
   case 'development':
     config = {
-      port: process.env.PORT
+      port: process.env.PORT || 5000
     };
     break;
   case 'production':
@@ -26,7 +26,7 @@ switch(process.env.NODE_ENV) {
 }
 
 app.configure('development', function() {
-  app.use(express['static']('static'));
+  app.use(express['static'](__dirname + '/static'));
   app.use(middleware.expressLogger);
   app.use(express.bodyParser());
   // app.use(cookies.express());
@@ -39,7 +39,7 @@ app.configure('development', function() {
 });
 
 app.configure('production', function() {
-  app.use(express['static']('static'));
+  app.use(express['static'](__dirname + '/static'));
   app.use(middleware.expressLogger);
   app.use(express.bodyParser());
   // app.use(cookies.express());
