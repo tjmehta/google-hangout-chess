@@ -19,6 +19,6 @@
     <Require feature="rpc"/>
   </ModulePrefs>
   <Content type="html"><![CDATA[
-    {{body}}
+    {{{body}}}
 ]]></Content>
 </Module>
