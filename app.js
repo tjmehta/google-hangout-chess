@@ -2,7 +2,7 @@ var express    = require('express');
 var app        = express();
 // var mongoose   = require('mongoose');
 // var cookies    = require('cookies');
-// var hbs        = require('hbs');
+var hbs        = require('hbs');
 // require('./static/hbsHelpers')(hbs);
 
 var routes     = require('./routes');
@@ -32,10 +32,12 @@ app.configure('development', function() {
   // app.use(cookies.express());
   // app.use(express.cookieSession(session));
   app.use(middleware.respond.express);
-  // app.set('views', __dirname + '/static/app/templates');
-  // app.set("view options", { layout: false });
+  app.set('views', __dirname + '/static/templates');
+  app.set("view options", { layout: false });
   // app.set('view engine', 'html');
+  app.set('view engine', 'xml');
   // app.engine('html', hbs.__express);
+  app.engine('xml',  hbs.__express);
 });
 
 app.configure('production', function() {
@@ -45,10 +47,12 @@ app.configure('production', function() {
   // app.use(cookies.express());
   // app.use(express.cookieSession(session));
   app.use(middleware.respond.express);
-  // app.set('views', __dirname + '/static/dist');
-  // app.set("view options", { layout: false });
+  app.set('views', __dirname + '/static/templates');
+  app.set("view options", { layout: 'layout.xml' });
   // app.set('view engine', 'html');
+  app.set('view engine', 'xml');
   // app.engine('html', hbs.__express);
+  app.engine('xml',  hbs.__express);
 });
 
 //routes
