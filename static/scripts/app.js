@@ -13,7 +13,7 @@
 * License for the specific language governing permissions and limitations under
 * the License.
 */
-var serverPath = '//google-hangout-chess.heroku.com/';
+var serverPath = '//google-hangout-chess.herokuapp.com/';
 
 // The functions triggered by the buttons on the Hangout App
 function countButtonClick() {

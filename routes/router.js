@@ -6,6 +6,7 @@ var router = module.exports = function(app) {
   // D - delete
 
   app.get('/', function(req, res) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
     res.json({message:"Hello World!"});
   });
 
