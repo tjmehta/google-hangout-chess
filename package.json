@@ -6,9 +6,9 @@
     "start" : "node app.js"
   },
   "dependencies": {
-    "express"    : "3.0.5",
-    "underscore" : "1.4.3",
-    "hbs"        : "2.0.1"
+    "express"    : "4.14.0",
+    "underscore" : "1.8.3",
+    "hbs"        : "4.0.1"
   },
   "engines": {
     "node" : "0.8.x",
